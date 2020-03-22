@@ -360,7 +360,7 @@ h1,h2,h3,h4,h5,h6 {
     top: 0;
     left: 0;
     z-index: 1;
-    margin-top: 15px;
+    margin-top: 65px;
 }
 
 .story__title {
@@ -1100,7 +1100,7 @@ h1,h2,h3,h4,h5,h6 {
 @media (max-width: 650px) {
     /* Story */
     .story__image {
-        margin-top: 70px;
+        margin-top: 135px;
     }
 
     /* Team */
