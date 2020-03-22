@@ -1,28 +1,47 @@
 let heightIntro = document.documentElement.clientHeight;
-console.log(heightIntro);
 let header = document.querySelector('#header');
 const headers = document.querySelectorAll("[data-scroll]");
+let navTog = document.querySelector('#nav-tog');
+let nav = document.querySelector('#nav');
 
 window.addEventListener('scroll', function headerFixed(){
     let pos = window.pageYOffset;
-    console.log(pos);
     if (pos > heightIntro){
         header.classList.add('header__fixed');
     } else {
         header.classList.remove('header__fixed');
     }
+
+    if (navTog.classList.contains('active')){
+        navTog.classList.remove('active');
+        nav.classList.remove('active');
+    }
 });
+
+navTog.addEventListener('click', openNav)
+
+function openNav(){
+    navTog.classList.toggle('active');
+    nav.classList.toggle('active');
+}
 
 headers.forEach(headersHandler);
 
 function headersHandler(item){
-    console.log(item);
     item.addEventListener('click', scrollToElem)
+    if (navTog.classList.contains('active')){
+        navTog.classList.remove('active');
+        nav.classList.remove('active');
+    }
 };
 
 function scrollToElem(){
     const id = this.dataset.scroll;
     let element = document.getElementById(id);
-    console.log(element);
-    element.scrollIntoView({ behavior: 'smooth', block: "center"});
+    if (element.id == 'people_say'){
+        element.scrollIntoView({ behavior: 'smooth', block: "center"});
+    } else {
+    element.scrollIntoView({ behavior: 'smooth', block: "start"});
+    }
 };
+
